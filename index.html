@@ -1,628 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>South Africa Project</title>
-<meta charset="utf-8" />
+<title>tamquam</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,intial-scale=1"/>
 
 <style>
-@namespace "http://www.w3.org/1999/xhtml";
-@namespace SVG "http://www.w3.org/2000/svg";
-
-/* == REPLACE WITH YOUR OWN FONT SELECTIONS == */
-@font-face {
-	Font-Family: "Source Serif Pro";
-	Font-Weight: 200;
-	Src:
-		Local("SourceSerifPro-ExtraLight"),
-		Local("NotoSerif-ExtraLight");
-}
-@font-face {
-	Font-Family: "Source Serif Pro";
-	Font-Weight: 300;
-	Src:
-		Local("SourceSerifPro-Light"),
-		Local("NotoSerif-Light");
-}
-@font-face {
-	Font-Family: "Source Serif Pro";
-	Font-Weight: 400;
-	Src:
-		Local("SourceSerifPro-Regular"),
-		Local("NotoSerif-Regular");
-}
-@font-face {
-	Font-Family: "Source Serif Pro";
-	Font-Weight: 600;
-	Src:
-		Local("SourceSerifPro-Semibold"),
-		Local("NotoSerif-SemiBold");
-}
-@font-face {
-	Font-Family: "Source Serif Pro";
-	Font-Weight: 700;
-	Src:
-		Local("SourceSerifPro-Bold"),
-		Local("NotoSerif-Bold");
-}
-@font-face {
-	Font-Family: "Source Serif Pro";
-	Font-Weight: 900;
-	Src:
-		Local("SourceSerifPro-Black"),
-		Local("NotoSerif-Black");
-}
-*:Root { Font-Family: "Source Serif Pro", Serif }
-
-/* Generic Selectors and Styles */
-
-* {
-	Margin: 0;
-	Border: None;
-	Padding: 0;
-	Color: Inherit;
-	Font: Inherit;
-	Text-Decoration: None;
-}
-*:Root:Root:Root:Root:Root:Root:Root:Root:Root:Root *[hidden] { Display: None }
-*[title]:Not([title=""]):Not(a) {
-	Cursor: Help;
-	Text-Decoration: Dotted Underline;
-}
-@supports Not (Text-Decoration: Dotted Underline) {
-	*[title]:Not([title=""]):Not(a) { Border-Bottom: Thin CurrentColor Dotted }
-}
-*.PAD-START { Margin-Left: Auto }
-*.PAD-END { Margin-Right: Auto }
-*.ALIGN-START { Text-Align: Left }
-*.ALIGN-END { Text-Align: Right }
-*.ALIGN-START.ALIGN-END { Text-Align: Justify }
-*.TEXT,
-*.TEXT.INLINE {
-	Display: Inline-Block;
-	Vertical-Align: Top;
-	Line-Height: 1;
-	Text-Align: Center;
-}
-*.INLINE { Display: Inline }
-
-/* Footnotes */
-
-*.FOOTNOTE {
-	Cursor: Help;
-	Text-Decoration: Dotted Underline;
-}
-@supports Not (Text-Decoration: Dotted Underline) {
-	*.FOOTNOTE { Border-Bottom: Thin CurrentColor Dotted }
-}
-*.FOOTNOTE>*.NOTE {
-	Display: Block;
-	Position: Absolute;
-	Left: 0;
-	Right: 0;
-	Margin: 0;
-	Border-Style: Double None;
-	Padding: .7REM 0;
-	Font-Family: Inherit;
-	Font-Size: Calc(1REM / 1.4);
-	Font-Weight: 200;
-	Font-Style: Normal;
-	Font-Variant: Normal;
-	Line-Height: 1REM;
-	Text-Align: Left;
-	Text-Indent: 0;
-	Color: #302F2B;
-	Background: #FAF8F7;
-	Opacity: 0;
-	Visibility: Hidden;
-	Cursor: Auto;
-	Transition: Opacity .5s, Visibility .5s;
-	Z-Index: 100;
-}
-*.FOOTNOTE:Hover>*.NOTE {
-	Opacity: 1;
-	Visibility: Visible;
-}
-
-/* Page Layout */
-
 html {
-	Font-Family: Serif;
-	Font-Weight: 300;
-	Line-Height: 1.4REM;
-	Color: #302F2B;
-	Background: #FAF8F7;
-	Text-Align: Justify;
-	Hyphens: Auto;
+	Color: #1F1A14; /* Basically just black */
+	Background: #FAF8F7; /* Basically just white */
 }
 body {
-	Position: Relative;
-	Margin: Auto;
-	Padding: 1.4REM 2REM;
-	Max-Width: 28REM;
-	Line-Height: 1.4REM; /* Chrome doesnʼt handle `line-height` REM properly on root */
+	Margin: 0 Auto;
+	Padding: 8PX; /* Default margins around `body` in Firefox */
+	Max-Width: 640PX;
 }
-body>header,
-body>header~div[role=note] {
-	Position: Absolute;
-	Top: 1.4REM;
-	Left: 2REM;
-	Right: 2REM;
-	Margin: 0;
-	Border: None;
-	Padding: 0;
-	Max-Width: 28REM;
-	Height: 3REM;
-	Overflow: Hidden;
-	Font-Size: Calc(3REM / 1.4);
-	Line-Height: 3REM;
-	White-Space: NoWrap;
-	Text-Align: Left;
-	Text-Overflow: Ellipsis;
-}
-body>header *,
-body>header~div[role=note] * {
-	Display: Inline;
-	Margin: 0;
-	Padding: 0;
-	Font: Inherit;
-	Text-Indent: 0;
-}
-body>header~div[role=note] {
-	Display: Flex;
-	Justify-Content: Space-Between;
-	Top: 4.4REM;
-	Border-Style: Solid None;
-	Border-Width: Thin 0;
-	Height: 1REM;
-	Font-Size: Calc(1REM / 1.4);
-	Line-Height: 1REM;
-}
-body>header~footer {
-	Position: Absolute;
-	Left: 2REM;
-	Right: 2REM;
-	Bottom: 1.4REM;
-	Height: 1REM;
-	Overflow: Auto;
-	Color: #75706A;
-	Font-Size: Calc(1REM / 1.4);
-	Line-Height: 1REM;
-	White-Space: NoWrap;
-	Text-Align: Right;
-}
-body>header~main {
-	Display: Block;
-	Margin: 5.8REM 0 2.4REM;
-}
-
-/* Sectioning Elements */
-
-main {
-	Display: Block;
-	Position: Relative;
-}
-header {
-	Display: Block;
-	Margin: 2.8REM 0 1.4REM;
-	Border-Bottom: Medium CurrentColor Double;
-	Padding: 0 0 .7REM;
-}
-header:First-Child,
-section:First-Child { Margin-Top: 0 }
-section {
-	Display: Block;
-	Margin: 2.8REM 0 1.4REM;
-}
-section:Last-Child { Margin-Bottom: 0 }
-aside,
-div[role=note] {
-	Display: Block;
-	Margin: 1.4REM 1REM;
-	Border-Left: .25REM CurrentColor Double;
-	Padding-Left: .75REM;
-	Font-Size: Calc(1REM / 1.4);
-	Font-Weight: 200;
-	Line-Height: 1REM;
-}
-nav {
-	Display: Block;
-	Margin: 1.4REM 0 1.4REM;
-}
-footer {
-	Display: Block;
-	Font-Size: Calc(1REM / 1.4);
-	Line-Height: 1REM;
-}
-blockquote>footer {
-	Margin-Top: .7REM;
-	Text-Align: Right;
-}
-blockquote>footer::BEFORE { Content: "— "}
-
-/* Tables */
-
-table {
-	Margin: .7EM Auto;
-	Border-Collapse: Collapse;
-	Width: 100%;
-	Overflow: Auto;
-	Color: #1F1A14;
-	Background: #DEDBD9;
-	Font-Size: Calc(1REM / 1.4);
-	Line-Height: 1REM;
-	Text-Align: Left;
-}
-thead {
-	Border-Bottom: Medium CurrentColor Double;
-	Text-Align: Center;
-}
-tbody+tbody { Border-Top: Medium CurrentColor Double }
-tfoot {
-	Border-Top: Medium CurrentColor Double;
-	Font-Weight: 200;
-}
-th,
-td {
-	Border: Thin CurrentColor Solid;
-	Padding: .35EM .5EM;
-	Vertical-Align: Top;
-}
-th {
-	Font-Weight: 600;
-	Vertical-Align: Bottom;
-}
-
-/* Figures and Embeds */
-
-figure {
-	Display: Block;
-	Margin: 1.4REM Auto;
-	Width: -moz-Fit-Content;
-	Width: Fit-Content;
-	Max-Width: 100%;
-}
-figure::AFTER {
-	Display: Block;
-	Clear: Both;
-	Content: "";
-}
-audio,
-iframe,
-img,
-SVG|svg,
-video {
-	Display: Block;
-	Margin: .7EM 0;
-	Max-Width: 100%;
-}
-img.TEXT,
-SVG|svg.TEXT {
-	Margin: 0;
-	Padding: Calc(.2EM / 1.4);
-	Max-Height: Calc(1EM / 1.4);
-	Max-Width: Calc(1EM / 1.4);
-	Line-Height: 1EM;
-	Vertical-Align: Middle;
-}
-iframe[src*="//youtube.com/embed/"],
-iframe[src*="//www.youtube.com/embed/"] {
-	Width: 560PX;
-	Height: 315PX;
-}
-SVG|svg:Not([color]) { Color: CurrentColor }
-SVG|svg:Not([fill]) { Fill: CurrentColor }
-
-/* Headings */
-header h1,
-header h2,
-header h3,
-header h4,
-header h5,
-header h6 { Margin: 0 }
-
-h1 {
-	Margin: 0 0 1.4REM;
-	Font-Size: 2.8REM;
-	Line-Height: 2.8REM;
-	Font-Weight: 700;
-	Text-Align: Left;
-}
-h2 {
-	Margin: 2.8REM 0 1.4REM;
-	Font-Size: 1.4REM;
-	Line-Height: 1.4REM;
-	Font-Weight: 400;
-	Text-Align: Left;
-}
-h2:First-Child { Margin-Top: 0 }
-h3 {
-	Margin: 1.4REM 0;
-	Font-Size: 1REM;
-	Line-Height: 1.4REM;
-	Font-Weight: 700;
-	Font-Variant: Small-Caps;
-	Text-Align: Center;
-}
-h4 {
-	Margin: 1.4REM 0 .7REM;
-	Font-Size: 1REM;
-	Line-Height: 1.4REM;
-	Font-Weight: 600;
-	Text-Align: Center;
-}
-h5 {
-	Margin: .7REM 0;
-	Font-Size: 1REM;
-	Line-Height: 1.4REM;
-	Font-Weight: 700;
-	Font-Variant: Small-Caps
-	Text-Align: Left;
-}
-h6 {
-	Margin: .7REM 0 0;
-	Font-Size: 1REM;
-	Line-Height: 1.4REM;
-	Font-Weight: 700;
-	Text-Align: Left;
-}
-
-/* Lists */
-ol,
-ul,
-dl {
-	Margin: .7REM 0;
-	Padding: 0 0 0 2REM;
-}
-ol { List-Style-Type: Decimal-Leading-Zero }
-ol ol { List-Style-Type: Upper-Alpha }
-ol ol ol { List-Style-Type: Lower-Alpha }
-ol ol ol ol { List-Style-Type: Decimal }
-ul { List-Style-Type: "→ " }
-ul ul { List-Style-Type: "† " }
-ul ul ul { List-Style-Type: "⇒ " }
-ul ul ul ul { List-Style-Type: "‡ " }
-dt {
-	Display: Inline;
-	Float: Left;
-	Margin: 0 0 0 -2REM;
-	Font-Weight: 600;
-}
-dt+dt { Margin: 0 }
-dt+dt::BEFORE { Content: ", " }
-dd { Position: Relative }
-dd::BEFORE { Content: " : " }
-dd+dd::BEFORE {
-	Position: Absolute;
-	Right: 100%;
-	Content: "″ : ";
-}
-dd::AFTER {
-	Display: Block;
-	Clear: Both;
-	Content: "";
-}
-ol.INLINE,
-ul.INLINE,
-dl.INLINE {
-	Display: Inline;
-	Margin: 0;
-	Padding: 0;
-}
-ol.INLINE { Counter-Reset: Inline-List }
-ol.INLINE>li,
-ul.INLINE>li,
-dl.INLINE>dt,
-dl.INLINE>dd {
-	Display: Inline;
-	Position: Static;
-	Float: None;
-	Margin: 0;
-}
-ol.INLINE>li::BEFORE {
-	Counter-Increment: Inline-List;
-	Content: "(" Counter(Inline-List, Decimal) ") "
-}
-ul.INLINE>li::BEFORE { Content: "→ " }
-ol.INLINE>li:Not(:Last-Child)::AFTER,
-ul.INLINE>li:Not(:Last-Child)::AFTER,
-dl.INLINE>dd:Not(:Last-Child)::AFTER { Content: " " }
-dl.INLINE>dd::BEFORE { Position: Static }
-dl.INLINE>dd::AFTER {
-	Display: Inline;
-	Clear: None;
-	Content: None;
-}
-ol.BIBLIOGRAPHY { List-Style-Position: Inside }
-ul.BIBLIOGRAPHY { List-Style-Type: None }
-ol.BIBLIOGRAPHY li,
-ul.BIBLIOGRAPHY li {
-	Margin: .7REM 0;
-	Text-Indent: -2REM;
-}
-ol.BIBLIOGRAPHY p,
-ul.BIBLIOGRAPHY p {
-	Margin: .7REM 0;
-	Text-Indent: 0;
-}
-
-/* Block Elements */
-
-blockquote {
-	Margin: 1.4REM 1REM;
-	Padding: 0 1REM;
-	Font-Size: Calc(1REM / 1.4);
-	Line-Height: 1REM;
-}
-blockquote blockquote,
-figure>blockquote { Margin: 0 }
-blockquote blockquote::BEFORE { Content: No-Open-Quote }
-blockquote blockquote::AFTER { Content: No-Close-Quote }
-figcaption {
-	Margin: .7EM 0 0;
-	Text-Align: Center;
-	Font-Size: Calc(1REM / 1.4);
-	Line-Height: 1REM;
-}
-figcaption::BEFORE,
-figcaption::AFTER {
-	Display: Block;
-	Clear: Both;
-	Content: "";
-}
-hr {
-	Padding: 0 0 1.4EM;
-	Width: 100%;
-	Height: 0;
-	Background: Transparent;
-}
-p+p,
-p+div.PARA,
-div.PARA+p,
-div.PARA+div.PARA { Text-Indent: 2EM }
-p>*,
-div.PARA>* { Text-Indent: 0 }
-p.INLINE { Text-Indent: 0 }
-blockquote>p:Not(:Empty)::BEFORE,
-blockquote>div.PARA:Not(:Empty)::BEFORE {
-	Display: Inline-Block;
-	Margin: 0 0 0 -1EM;
-	Width: 1EM;
-	Text-Align: Right;
-	Text-Indent: 0;
-	Content: Open-Quote;
-}
-blockquote>p:Not(:Empty)::AFTER,
-blockquote>div.PARA:Not(:Empty)::AFTER { Content: No-Close-Quote }
-blockquote>p:Last-Of-Type:Not(:Empty)::AFTER,
-blockquote>div.PARA:Last-Of-Type:Not(:Empty)::AFTER { Content: Close-Quote }
-p.VERSE,
-div.VERSE {
-	White-Space: Pre-Line;
-	Text-Indent: 0;
-	Text-Indent: 2EM Hanging Each-Line; /* Not supported anywhere */
-}
-p+p.VERSE,
-div.PARA+p.VERSE,
-div.VERSE+p.VERSE,
-p+div.VERSE,
-div.PARA+div.VERSE,
-div.VERSE+div.VERSE { Margin-Top: .7EM }
-pre {
-	Box-Sizing: Border-Box;
-	Margin: .7REM 0;
-	Padding: 0 1REM;
-	Max-Width: 100%;
-	Overflow-X: Auto;
-	Overflow-Y: Hidden;
-	Font-Size: 1REM;
-	Line-Height: 1REM;
-	Text-Align: Left;
-}
-
-/* Phrasing content */
-a[href] {
-	Outline-Style: Outset;
-	Outline-Width: 1PX;
-	Outline-Color: Transparent;
-	Color: #1F1A14;
-	Background: Transparent;
-	Font-Weight: Bolder;
-	Text-Decoration: Underline;
-	Transition: Outline-Color .5s, Background-Color .5s;
-}
-a[href]:Active,
-a[href]:Hover {
-	Outline-Color: #948D87;
-	Background: #FAF8F7;
-}
-a[href]:Active { Outline-Style: Inset }
-:Root body>header a[href],
-body>header~div[role=note] a[href] {
-	Color: Inherit;
-	Outline: None;
-	Background: None;
-	Font-Weight: Inherit;
-	Transition: None;
-}
-b { Font-Weight: 600 }
-code { Font-Weight: 200 }
-del { Text-Decoration: Double Line-Through }
-dfn {
-	Font-Weight: Bolder;
-	Font-Variant: Small-Caps;
-}
-em { Text-Decoration: Underline }
-i { Font-Variant: Small-Caps }
-ins { Text-Decoration: Double Underline }
-mark {
-	Border: Thin #948D87 Solid;
-	Border-Radius: .4REM;
-	Padding: 0 .2REM;
-	Color: #302F2B;
-	Background: #FAF8F7;
-}
-s { Text-Decoration: Line-Through }
-small { Font-Weight: Lighter }
-strong { Font-Weight: 700 }
-sub {
-	Font-Size: Calc(1EM / 1.4);
-	Vertical-Align: Baseline;
-	Line-Height: .7EM;
-}
-sup {
-	Font-Size: Calc(1EM / 1.4);
-	Vertical-Align: Super;
-	Line-Height: .7EM;
-	Text-Transform: Uppercase;
-}
-u { Text-Decoration: Underline }
-u.TITLE { Text-Decoration-Style: Wavy }
+*:Link,
+*:Visited { Color: #4B2DF7 }
+*:Link:Active,
+*:Visited:Active { Color: #B01C1C }
 </style>
 
 <header>
-	<h1>South Africa Project</h1>
+	<h1>tamquam</h1>
+	<small>Last updated : <time datetime="2019-08-29">29 August 2019</time></small>
 </header>
-<div role="note">
-	<p>By Julia Reed</p>
-	<p><time datetime="2019-03-04">04 March 2019</time></p>
-</div>
-<main>
-	<div role="note">
-	<p>Translations, citations, and clarifications are available via inline footnotes. Please hover over any text with a <span class="FOOTNOTE">dotted line beneath<span class="NOTE">This is an example footnote for demonstration purposes. It has no semantic content.</span></span> to read the corresponding footnote</p>
-</div>
-	<h2>Prehistoric</h2>
-		<p>Some of the oldest signs of hominid occupation are found in South Africa, with fossil sites dating back as many as <span class="FOOTNOTE">4.5 million years<span class="NOTE">“Fossils found in the many archaeological caves of the Makapan Valley have enabled the identification of several specimens of early hominids, more particularly of Paranthropus, dating back between 4.5 million and 2.5 million years, as well as evidence of the domestication of fire 1.8 million to 1 million years ago.” <a href="http://whc.unesco.org/en/list/915">Read more</a></span></span>, with settlement by Homo sapiens estimated to have taken place between 130,000 and 260,000 years ago. Cave paintings suggest the presence of ancestors to the Khoisan as far back as <span class="FOOTNOTE">13,000BCE<span class="NOTE">"14 000-15 000 BP: Dated rock paintings reveal that Ancestors of the San hunter-gatherers are widely distributed in Southern Africa at this stage." <a href="https://www.sahistory.org.za/article/pre-1500">Read more</a></span></span></p>
-	<h2>Khoisan and Bantu (roughly 300BCE-1488CE)</h2>
-		<p>The oldest indications of pastoral herding in South Africa are over <span class="FOOTNOTE">two thousand years old.<span class="NOTE">"There is evidence of a south-westerly migration of pastoralist groups such as the Khoe with the proliferation of pottery, domesticated sheep, goats and cattle. New evidence of two teeth of domestic animals found in the Erongo Mountains in central Namibia in 2012 shifts the evidence of pastoralists communities in the region to 2300 and 2200 years respectively." <a href="https://www.sahistory.org.za/article/namibian-timeline">Read More</a></span></span> Pastoral herding is the likely source of the tradition of <span class="FOOTNOTE">measuring ones wealth in livestock<span class="NOTE">"Khoikhoi society consisted of both rich and poor, as animals – which were a sign of wealth - could belong to individuals." <a href="https://www.sahistory.org.za/article/khoikhoi">Read more</a></span></span>, as seen in <i>Cry, Beloved Country</i>.</p>
+<body>
+<p>A timeline of my college application process, largely for my own reference, because I still mostly don't actually believe I'm attending college:
+	<dl>
+		<dt>Early June</dt>
+			<dd>graduate from highschool! Stretched junior and senior year out over two years each so I originally was in class of 2016</dd>
+		<dt>Late June</dt>
+			<dd>learn that I do actually still qualify for SEED, but only if I start attending school this fall</dd>
+		<dt>July 5</dt>
+			<dd>contact admissions about the process for late admissions
+		<dt>July 11</dt>
+			<dd>am instructed to complete the common app</dt>
+		<dt>July 15</dt>
+			<dd>Start the common app</dd>
+		<dt>July 26</dt>
+			<dd>complete common app, discover the site has been taken offline (!) when you go to submit your personal essay</dd>
+		<dt>Aug 1</dt>
+			<dd>actually submit the common app</dd>
+			<dd>email my contact in admissions, who never responds</dd>
+		<dt>Aug 15</dt>
+			<dd>Automated email saying my application is being processed</dd>
+		<dt>Aug 16</dt>
+			<dd>Go catsit for MER, who's house does not have reliable cell service</dd>
+		<dt>Aug 26</dt>
+			<dd>Finally track down a <em>different</em> person in admissions, who is actually in office and promises to handle my application personally, as classes are starting tomorrow</dd>
+			<dd>Look at online course catalogue and make some educated guesses as to which classes I need to take</dd>
+			<dd>Get home from catsitting approx 11:30PM</dd>
+		<dt>Aug 27</dt>
+			<dd>show up to classes despite not even being technically accepted yet</dd>
+			<dd>FAFSA</dd>
+		<dt>Aug 28</dt>
+			<dd>recieve an official acceptance letter from admissions</dd>
+			<dd>contact IT because the application landing page isn't letting me pay my deposit</dd>
+			<dd>go to more classes I'm not registered for</dd>
+			<dd>actually pay my deposit</dd>
+		<dt>Aug 29</dt>
+			<dd>meet my advisor & enroll</dd>
+			<dd>contact IT because my school email has somehow already gotten messed up</dt>
+			<dd>descover no school email = Central Authentication Service = no Canvas = no syllabi</dd>
+			<dd>make egg pasta, because your great aunt is visiting</dd>
+			<dd>start to write a journal entry about how you feel about being in college, because your english class lets you submit a journal for extra credit</dd>
+			<dd>realize you have <em>no idea</em> how you feel because you mostly haven't processed the fact that you actually are, in fact, in college</dd>
+	</dl> 
 
-		<p>Five thousand years ago, the Bantu people migrated <span class="FOOTNOTE">from central Africa to southern Africa<span class="NOTE">"The expansion of Bantu languages, which started around 5,000 years before present in west/central Africa and spread all throughout sub-Saharan Africa, may represent one of the major and most rapid demographic movements in the history of the human species." <a href="https://academic.oup.com/mbe/article/26/7/1581/1123707">Read more</a></span></span>, likely reaching what is now South Africa around 600CE. The Bantu people were farmers, bringing with them domestic animals, techniques for farming wheat and other crops, and ironworking skills. The Bantu people also formed the Kingdom of Mapungubwe in roughly 900CE which developed into the largest kingdom in sub-saharan Africa until it before it was <span class="FOOTNOTE">abandoned around 1300CE. <span class="NOTE">"It is difficult to find a single explanation for the desertion of Mapungubwe. Some archaeologists feel that the kingdom began to decline in the 1100's because the climate changed. The weather became colder and drier and reduced the grazing land making cattle farming difficult. Others think there was a change in trade routes."<a href="https://www.sahistory.org.za/article/kingdoms-southern-africa-mapungubwe">Read more</a></span></span></p>
-	<h2>European Contact and Colonization (1488-1910)</h2>
-		<h3>First Contact (1488-1652)</h3>
-			<p>The first European ship to lay anchor in South Africa was helmed by Bartolomeu Dias, who explored the coastline while looking for trade routes to Asia. He named the place <span class="FOOTNOTE">“Cabo das Tormentas.”<Span class="NOTE">Portuguese for “Cape of Storms”</span></span> A second expedition in <span class="FOOTNOTE">1497<span class="NOTE">"Vasco da Gama is mandated to expand on Dias' discoveries. Da Gama departs from Targus on 8 July 1497, heading an expedition consisting of two ships, São Rafael and São Gabriel . They sail along the southern African coast on the way to India." <a href="https://www.sahistory.org.za/article/pre-1500">Read more</a></span></span> was the first to round the Cape of Good Hope, thereby opening up <span class="FOOTNOTE">the Cape Route between Europe and Asia.<span class="NOTE">"Da Gama reaches the mouth of the Limpopo River during the first weeks and lands 85km north of it, where he meets the first Black people, probably a Tsonga society living north of the Limpopo. Next, he goes ashore at the northern branch of the Zambezi delta, where he encounters Moslems. He crosses the Indian Ocean with the help of the famous Arabian pilot, Ahmad ibn-Mayid, and reaches India via the Cape of Malabar, thereby establishing the Portuguese monopoly of the sea trade route to India." <a href="https://www.sahistory.org.za/article/pre-1500">Read more</a></span></span></p>
-		<h3>Dutch Colonization (1652-1814)</h3>
-			<p> In 1652, the <span class="FOOTNOTE">Vereenigde Oostindische Compagnie<span class="NOTE">the Vereenigde Oostindische Compagnie is also known as the Dutch East India Company</span> </span> decided to establish the <span class="FOOTNOTE">Kaapkolonie<span class="NOTE">Also known as the Dutch Cape Colony</span></span> at the Cape of Good Hope to act as a secure base for their ships sailing the Cape Route. They would provide their ships with fresh provisions, lodging, and make any small repairs necessary before the ships finished their long journey to Asia.</p>
-			<p>Permanent settlement was begun by <span class="FOOTNOTE">Vryburgher<span class="NOTE">Dutch for “Free citizen,” the Vryburgher were ex-employees of the VOC who were unable or uninterested in returning home when their contracts expired. They recieved a plot of land from the VOC in exchange for selling some of what they harvested back to the VOC to use as ships provisions</span></span> farmers. The Vryburgher’s primarily settled Khoikhoi territory which resulted in some social mixing, most notably the creation of the Afrikaans language, a Dutch-Khoisan Creole.  The Vrybugher sold their farms crop to the VOC and, as farming was labor intensive, many began importing slaves, primarily from Dutch colonies in Indonesia. This resulted in the fourth ethnically distinct group living in South Africa after the Khoisan, Bantu, and Dutch peoples.</p>
-		<h3>British Colonization (1814-1910)</h3>
-			<p>During the French Revolutionary Wars, French troops invaded the Dutch Republic and reformed it into the Batavian Republic. In response, Great Britain seized several Dutch colonies to keep them out of French control, including the Kaapkolonie. While the British relinquished the colony back to Dutch Control, it ended up back in British hands <span class="FOOTNOTE">by the end of the Napoleonic wars.<span class="NOTE">"1806: The British occupy the Cape for a second time. After a skirmish between British troops and a Cape burgher militia at Blaauwberg, the Dutch capitulate. All property of the Batavian Government is surrendered to the British. The formal cession of the colony to the Britain takes place eight years later in 1814" <a href="https://www.sahistory.org.za/article/1800s">Read more</a></span></span></p>
-			<p> Like the Dutch, the British initially had little interest in the Cape Colony past its use as a strategically located port. However by 1806 they had begun exerting their administrative control, banning the use of the Dutch language, and encouraging settlement by British immigrants, who formed the cities of <span class="FOOTNOTE">Grahamstown<span class="NOTE">Now known as Makhanda</span></span> and Port Elizabeth. This, along with the abolition of slavery by the British government in 1838, encouraged many of the original Dutch settlers to <span class="FOOTNOTE">leave the Cape Colonies confines.<span class="NOTE">"The widely accepted reasons for the Great Trek are regarded as political, economic and social. Boer farmers migrated from the authority of the British colonial government of the Cape whom they perceive as being politically unsympathetic to their needs. Policy decisions taken in London meant that the Boer farmer were no longer allowed to expand their farms and grazing areas at the expense of the indigenous population with impunity. Ordinance 50 of 1828 granted Khoikhoi and Coloureds, the traditional servants and slaves of the Boer farmers not only the freedom to seek work, but also to own land. This leads to a shortage of labour for Boer farmers. In addition Ordinance 50 put all "free inhabitants" of the Colony on equal political footing before the law. This political act is unacceptable to the Boers who regard Blacks as uncivilised heathen and therefore inferior to Whites." <a href="https://www.sahistory.org.za/article/1800s">Read more</a></span></span> These <span class="FOOTNOTE">voortrekkers<span class="NOTE">Afrikaans for “path finders”</span></span> would eventually form the <span class="FOOTNOTE">Boer<span class="NOTE">Boer is Afrikaans for “farmer.” It is also seen in the term “Trekboar,” the nomadic farmers who left the Cape Colony while it was still under Dutch control</span></span> republics, including the South African Republic, the Orange Free State, and the Natlia Republic.</p>
-			<p>Border between the various colonies, settlements and native tribes increased, eventually leading to several republics being incorporated into the Britain’s Cape Colony. One of these was Griqualand, which contained the <span class="FOOTNOTE">first South African Diamond mine.<span class="NOTE">"The Keate award favoured the Griquas claim. This meant that the land which eventually contained Kimberley and the richest diamond fields in the world was given to the Griquas. In the end this agreement helped the Griquas very little. Their leader, Nicholas Waterboer didn't have the power to control the diggers...Barkly took over the area in Britain's name in 1872" <a href="https://www.sahistory.org.za/archive/all-glitters-rock-which-future-will-be-built-emilia-potenza">Read more</a></span></span> Gold was discovered soon after, leading to the foundation of the city of <span class="FOOTNOTE">Johannesburg<span class="NOTE">"Settlement of Johannesburg began in 1886, when gold was discovered in the Witwatersrand by an Australian prospector named George Harrison. The discovery spurred a feverish gold rush as fortune hunters from all over the world descended on the area." <a href="http://www.city-data.com/world-cities/Johannesburg-History.html">Read more</a></span></span>, where much of the plot of “Cry, Beloved Country” takes place. The discovery of diamonds and gold, along with the resulting immigration rushes, only heightened tensions in South Africa, eventually leading to <span class="FOOTNOTE">the Anglo-Boer Wars.<span class="NOTE">"The first Boer War of 1880-1881 has also been named the Transvaal Rebellion, as the Boers of the Transvaal revolted against the British annexation of 1877. Most scholars prefer to call the war of 1899-1902 the South African War, thereby acknowledging that all South Africans, white and black, were affected by the war and that many were participants." <a href="http://www.bbc.co.uk/history/british/victorians/boer_wars_01.shtml">Read more</a></span></span>
-			<p>By 1900, the last of the major Boer towns had surrendered, but Boer <span class="FOOTNOTE">bittereinders<span class="NOTE">Afrikaans, literally “bitter end-ers” as in those who will “fight to the bitter end”</span></span> continued fighting with guerrilla tactics for another two years. In addition to the standard casualties of war, Britain took kept large numbers of Boer citizens in inhumane concentration camps, where many died of disease and neglect. </p>
-		<h3>Union of South Africa (1910-1960)</h2>
-			<p>Following the Anglo-Boer Wars, Britain created the <span class="FOOTNOTE">Union of South Africa.<span class="NOTE">"The Union of South Africa is founded through the confederation of four previously separate British colonies: Cape Colony, Natal Colony, Transvaal Colony, and Orange River Colony. The Union is under British dominion." <a href="https://www.sahistory.org.za/article/sophiatown-timeline">Read more</a></span></span> The Union of South Africa continued many racist policies from the previous colonies it was made up of, as well as instituting new ones, such as the <span class="FOOTNOTE">1913 Natives’ Land Act.<span class="NOTE"> "At a stroke, the passing of the Natives Land Act on 19 June 1913 saw the majority of South African land reserved for whites, or Europeans. Just 7% of agricultural land was set aside on reserves for blacks, or Africans, though they comprised 67% of the population." <a href="http://www.bbc.co.uk/history/0/22786616">Read more</a></span></span> The Union of South Africa came to an end in 1961, when South Africa withdrew from the British commonwealth, resulting in the dissolution of the Union of South Africa and subsequent founding of <span class="FOOTNOTE">The Republic of South Africa.<span class="NOTE">"30 May: The Union of South Africa officially ceases to exist at midnight<br> 31 May: South Africa is declared a republic, independent and outside the commonwealth. C.R. Swart, the former Governor-General, is sworn in as the first President of the Republic of South Africa. South Africa formally withdraws from the Commonwealth and proclaims itself a Republic." <a href="https://www.sahistory.org.za/topic/general-south-african-history-timeline-1960s">Read more</a></span></span></p>
-	<h2>Apartheid (1948–1990)</h2>
-		<h3>Apartheid Legislation</h3>
-			<p>While both social and legal discrimination against the non-white population of South Africa existed since virtually the colonies founding, <span class="FOOTNOTE">Apartheid<span class="NOTE">Afrikaans for "separateness"</span></span> is only considered to have begun with the <span class="FOOTNOTE">Herenigde Nasionale Party<span class="NOTE">Also known as the Reunited National Party. The party's name was shortened to the Nasionale Party with its merge with the Afrikaner Party following the 1948 election.</span></span>'s ascent to power during the 1948 South African Parliamentary Election. Following the election, Apartheid was codified into law with legislation such as the <span class="FOOTNOTE">Population Registration Act of 1950<span class="NOTE">Population Registration Act of 1950 formalized racial classification by dividing citizens into four categories: white, black, coloured, and Indian. The act also introduced identity cards for all citizens over the age of 18 which specified their new legally assigned race. <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01838.htm">Read More</a></span></span>, <span class="FOOTNOTE">the Group Areas Act of 1950<span class="NOTE">The Group Areas Act of 1950 codified segregation by designating areas for the sole occupation of specific racial groups. Punishment for living or owning business in an area designated for another race was a fine and up to two years of imprisonment. <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01839.htm">Read More</a></span></span>, <span class="FOOTNOTE">the Prevention of Illegal Squatting Act<span class="NOTE">The act authorized the forcible removal of squatters, with a specific aim towards the destruction of the shantytowns which had sprung up to provide residence for non-white urban workers prior to the implementation of apartheid. <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01846.htm">Read More</a></span></span>, <span class="FOOTNOTE">the Prohibition of Mixed Marriages Act<span class="NOTE">The Prohibition of Mixed Marriages act prohibited marriage between "Europeans" and "non-Europeans" with the punishment being jail time for the married couple and a fine of up to 50 pounds for the officiant. source: <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01833.htm">Read More</a></span></span> of 1949 and the <span class="FOOTNOTE">the Immorality Amendment Act of 1950<span class="NOTE">The Immorality Amendment Act updated a 1927 law to prohibit all sexual intercourse between whites and other races <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01837.htm">Read More</a></span></span>.</p>
-			<p>Further legislation was enacted to suppress resistance to Apartheid, including the <span class="FOOTNOTE">Suppression of Communism Act<span class="NOTE">The suppression of communism act was similar to America's McCarthyism, in that it defined communism so broadly it could then be used to persecute any political activism the government disapproved of. <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01845.htm">Read More</a></span></span> and the disenfranchisement of non white citizens through the <span class="FOOTNOTE">Separate Representation of Voters Act<span class="NOTE">Separate Representation of Voters Act disenfranchised the non-white population of South Africa, removing them from the voting roll and creating a separate coloureds roll which elected four white representatives to the House of Assembly and one to the Senate <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01873.htm">Read More</a></span></span>. Education for non-whites was similarly curtailed through <span class="FOOTNOTE">the Bantu Education Act<span class="NOTE">The Bantu Education Act enforced racially segregated educational facilities, and rescinded funding to mission schools, which the state considered to be "fostering ideas, such as equality, which could not be encouraged." <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01859.htm">Read More</a></span></span>, <span class="FOOTNOTE">the Extension of University Education Act<span class="NOTE">The Extension of University Education Act made it a criminal offense for a non-white student to register at a white university without a written permit from the Minister of Internal Affairs. It also established a small number of new universities for the non-white population of South Africa. <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01898.htm">Read More</a></span></span>, and <span class="FOOTNOTE">The Africaan's Medium Decree<span class="NOTE">The Afrikaan's Medium Decree required the use of Afrikaans and English for all black schools grade five and up. <a href="https://www.thoughtco.com/the-afrikaans-medium-decree-43416">Read More</a></span></span></p>
-			<p>The most significant way the South African government enforced the segregation and subordination of the Black population of South Africa was through the creation of <span class="FOOTNOTE">"Homelands."<span class="NOTE">Also known as Bantustans <a href="https://www.britannica.com/topic/Bantustan">Read More</a></span></span> The homelands acts built on <span class="FOOTNOTE">the pre-apartheid 1913 Natives Land Act<span class="NOTE">See explanatory note in Union of South Africa (1910-1960)</span></span> and was codified into law through <span class="FOOTNOTE">the Bantu Authorities Act<span class="NOTE"> Passed in 1951, the act was "was an attempt to restructure the government of the reserves on more traditional lines, but in practice came to mean the establishment of a system of indirect rule through the medium of subservient and sometimes well-rewarded chiefs, chosen for their preparedness to enforce government policy at the expense of their own popularity" <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01844.htm">Read More</a></span></span>, <span class="FOOTNOTE">the Promotion of Bantu Self-Government Act<span class="NOTE">Passed in 1959, the act turned the 1913 Native Land Act's reserves into theoretically self sufficient and self governing "Bantu Homelands" <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01899.htm">Read More</a></span></span>, <span class="FOOTNOTE">the Bantu Homelands Citizen Act<span class="NOTE">Passed in 1970 this act gave all black citizens of South Africa citizenship of a designated homeland, as determined by their ethnicity. <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01944.htm">Read More</a></span></span>, and <span class="FOOTNOTE">the Bantu Homelands Constitution Act.<span class="NOTE">Passed in 1971, this act empowered the South African government to grant independence to any homeland. Four homelands were eventually considered "independent" by South African law, but none of them were ever considered to have independent sovereignty by in international politics. <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01947.htm">Read More</a></span></span></p>
-			<p>By creating the homelands, the South African Government was able to create a "white South Africa." They stripped all non-white citizens of South Africa of their citizenship by declaring them citizens of the semi-independant Homelands, even if they had never even entered their designated homeland. The homelands were overcrowded — they had been designated only 13% of South Africa's land, despite black people making up 75% of the countries population - and had little to no infrastructure. This prevented the economic and agrarian development necessary for the homelands to become self sustaining, keeping the communities <span class="FOOTNOTE">poor and dependent on migrant work in South Africa.<span class="NOTE">"Bantustans relied almost entirely on White South Africa’s economy. Farming was not very viable largely because of the poor agricultural land in the homelands. In addition, Blacks owned only thirteen percent of South Africa’s land. These farm lands were in a poor condition because of soil erosion, and overgrazing. As a result, millions of Blacks had to leave the Bantustans daily and work in the mines, for White farmers, and [in] other industries in the cities. The homelands served as labour reservoirs, housing the unemployed and releasing them when their labour was needed in White South Africa." <a href="https://www.sahistory.org.za/article/homelands">Read More</a></span></span> During the 1950's up until the end of apartheid, the South African government continuously forcibly relocated black citizens into these homelands stripping them of their ownership of what was now "white land" in the process.</p>
-		<h3>Resistance to apartheid & Government Violence</h3>
-			<p>Protests of Apartheid were common, and initially peaceful. Organized by anti-apartheid political parties like the African National Congress, the Pan-Africanist Congress and the Communist Party of South Africa, methods of protesting included strikes, public demonstrations, boycotts, passbook burnings, & entering segregated areas without a permit. The state responded by attempting to suppress the protests, using tactics that varied from the surveillance and arrest of community organizers to <span class="FOOTNOTE">state sponsored extra-judicial killings.<span class="NOTE">"The Commission finds that the state perpetrated, among others, the following types of gross violations of human rights in South and/or southern Africa:...<br>Extra judicial killings in the form of state-planned and executed assassinations, attempted killings, disappearances, abductions and so-called 'entrapment killings', where individuals were deliberately enticed into situations" <a href="http://www.justice.gov.za/trc/report/finalreport/Volume5.pdf">Read More (p. 226)</a></span></span> Larger events would be broken up and suppressed with with force, resulting in the injury or <span class="FOOTNOTE">death of many protestors.<span class="NOTE">"This is not to suggest that prior to 1978 the state did not kill its opponents...routine killings of demonstrators, occurred in the course of the SAP’s public-order policing policy involving, in the Commission’s view, an unjustifiable use of deadly force. <a href="http://www.justice.gov.za/trc/report/finalreport/Volume5.pdf">Read More (p. 216)</a></span></span></p>
-			<p>Two of the most notable massacres in South African history were <span class="FOOTNOTE">the Sharpeville Massacre,<span class="NOTE">21 March, 1960: "Eyewitness accounts attest to the fact that the people were given no warning to disperse. Eyewitness accounts and evidence later led to an official inquiry which attested to the fact that large number of people were shot in the back as they were fleeing the scene...'The police have claimed they were in desperate danger because the crowd was stoning them. Yet only three policemen were reported to have been hit by stones - and more than 200 Africans were shot down. The police also have said that the crowd was armed with 'ferocious weapons', which littered the compound after they fled. I saw no weapons, although I looked very carefully, and afterwards studied the photographs of the death scene. While I was there I saw only shoes, hats and a few bicycles left among the bodies.' " <a href="https://www.sahistory.org.za/topic/sharpeville-massacre-21-march-1960">Read More</a></span></span> where police fired upon a peaceful crowd, resulting in approximately 70 dead and 180 wounded, and <span class="FOOTNOTE">the June 16th Soweto Massacre<span class="NOTE">16 June, 1976: "The Soweto uprising takes place on the day that the Internal Security Amendment Act comes into operation. It is hard to get a clear picture of exactly what happened on the day. It is exam time for senior pupils, and the exams must be written in Afrikaans. A march starts and pupils from many schools along the way join in. Teargas is fired. Gunshots are fired at the pupils and pandemonium breaks out. Anger at the senseless killings inspires retaliatory action. Police cars are burnt. Fires blaze throughout the night. At least 200 people are killed." <a href="https://www.sahistory.org.za/topic/june-16-soweto-youth-uprising-timeline-1976-1986">Read More</a></span></span>, where police were responsible for over 200 deaths and 1,222 reported injuries during the Soweto Youth Uprising. Mass outrage followed both events, and they both resulted in an <span class="FOOTNOTE">increased militarization<span class="NOTE">"The objective of the armed struggle was the overthrow of the apartheid state in order to achieve democracy, freedom and peace in South Africa. The ANCs decision to embark on armed struggle was reached after many decades of non-violent resistance, which was met by <strong>increasingly brutal repression by the apartheid regime.</strong> The African National Congress (ANC) had no choice but to resort to armed struggle after the National Party government first narrowed the arena of legal political activity and finally closed it in 1960 by banning the movement. The ANC asserted moral legitimacy for the resort to violence on the grounds of necessary defence and just war." <a href="https://omalley.nelsonmandela.org/omalley/index.php/site/q/03lv02424/04lv02730/05lv02918/06lv02985.htm">Read More</a></span></span> of the anti-apartheid protest movement. Protests of apartheid from 1960 through the end of apartheid increasingly took the form of guerrilla warfare.</p>
-		<h3>International Response</h3>
-			<p>International response to apartheid ranged from mostly neutral responses to deeply negative. Many felt that the policies of apartheid were too similar to the genocidal facism of Nazi Germany, which had only surrendered three years previously. The UN condemned Apartheid for breaking the charter of the United Nations starting in 1952 and with <span class="FOOTNOTE">increasing vehemence<span class="NOTE">"Apartheid was annually condemned by the General Assembly as contrary to Articles 55 and 56 of the Charter of the United Nations from 1952 until 1990; and was regularly condemned by the Security Council after 1960. In 1966, the General Assembly labelled apartheid as a crime against humanity (resolution 2202 A (XXI) of 16 December 1966) and in 1984 the Security Council endorsed this determination (resolution 556 (1984) of 23 October 1984). The Apartheid Convention was the ultimate step in the condemnation of apartheid as it not only declared that apartheid was unlawful because it violated the Charter of the United Nations, but in addition it declared apartheid to be criminal. The Apartheid Convention was adopted by the General Assembly on 30 November 1973, by 91 votes in favour, four against (Portugal, South Africa, the United Kingdom and the United States) and 26 abstentions. It came into force on 18 July 1976." <a href="http://legal.un.org/avl/ha/cspca/cspca.html">Read More</a></span></span>, eventually calling for <span class="FOOTNOTE">oil and arms embargoes in 1963<span class="NOTE">"The General Assembly, having considered the question of South West Africa, ...Urges all states which have not yet done so to take, separately or collectively, the following measures with a reference to the question of South West Africa: <br>(a) Refrain forthwith from supplying in any manner or form any arms or military equipment to South Africa; <br>(b) Refrain also from supplying in any manner or form any petroleum or petroleum products to South Africa;" <a href="https://documents-dds-ny.un.org/doc/RESOLUTION/GEN/NR0/185/74/IMG/NR018574.pdf?OpenElement">Read More</a></span></span> and then <span class="FOOTNOTE">suspending South Africa from the UN in 1974<span class="NOTE">"November 12, 1974: The General Assembly suspends South Africa from participating in its work, due to international opposition to the policy of apartheid." <a href="https://www.un.org/en/events/mandeladay/un_against_apartheid.shtml">Read More</a></span></span></p>
-	<h2>Post-apartheid (1990-present)</h2>
-		<p>Eventually the combination of internal and external pressures lead to a softening of apartheid policies. The bans on the African National Congress and the South African Communist Party were lifted by State President F. W. de Klerk, who also ordered the release of a number of political prisoners, including <span class="FOOTNOTE">Walter Sisulu<span class="NOTE">"15 October: After 26 years in prison, Rivonia trialists Walter Sisulu, Ahmed Kathrada, Andrew Mlangeni, Elias Motsoaledi, Raymond Mhlaba and Wilton Mkwayi, were released along with Oscar Mpetha, the veteran ANC and SACP leader in the Cape, and Japhta Masemola, a PAC leader. Their release was greeted with scenes of wild celebration around the country." <a href="https://www.sahistory.org.za/jquery_ajax_load/get/topic/african-national-congress-timeline-1980-1989">Read More</a></span></span> and <span class="FOOTNOTE">Nelson Mandela<span class="NOTE">"Mandela began to answer those questions shortly after he walked out the front gate of the Victor Verster Prison in suburban Cape Town on the sun-splashed afternoon of Feb. 11, 1990, arm-in-arm with his then-wife, Winnie. Each raised a fist in triumph. <br>Black South Africa exploded with joy. A raucous crowd of some 100,000 blacks squeezed into the Grand Parade grounds outside Cape Town's City Hall, infusing it with the energy of a rock concert. Mandela was to deliver his first speech there, at what was almost certainly the largest black crowd ever to gather for an event in what was still formally a white city." <a href="https://www.npr.org/sections/parallels/2013/06/11/190671704/the-day-nelson-mandela-walked-out-of-prison">Read More</a></span></span>. De Klerk also repealed a number of discriminatory laws as his administration entered into the negotiation process with the ANC to democracize South Africa(3). Then, in 1992 de Klerk held a whites only <span class="FOOTNOTE">referendum on ending apartheid<span class="NOTE">"White South Africans have backed an overwhelming mandate for political reforms to end apartheid and create a power-sharing multi-racial government. In a landslide victory for change, the government swept the polls in all four provinces, and all but one of 15 referendum regions. It won 68.6% of the vote in a record turn-out, which, in some districts exceeded 96%." <a href="http://news.bbc.co.uk/onthisday/hi/dates/stories/march/18/newsid_2524000/2524695.stm">Read More</a></span></span>, which recieved a 69% majority vote that the government should continue its negotiations for a new constitution and end apartheid. After extensive negotiation, the an interim constitution is written and the first multi-racial national election was held in 1994; <span class="FOOTNOTE">Nelson Mandela<span class="NOTE">"26-29 April, South Africa holds its first democratic general election. The African National Congress wins 62.65% of the vote. The National Party 20.39%, Inkatha Freedom Party 10.54%, Freedom Front 2.2%, Democratic Party 1.7%, Pan Africanist Congress 1.2% and the African Christian Democratic Party 0.5%. <br>2 May, Nelson Mandela makes a speech announcing the ANC’s election victory. <br>10 May, Nelson Mandela is inaugurated as the President of South Africa." <a href="https://www.sahistory.org.za/topic/african-national-congress-timeline-1990-1999">Read More</a></span></span> is elected as president. South Africa's new constitution is signed into law two years later, on <span class="FOOTNOTE">December 10th, 1996.<span class="NOTE">"On 8 May, after a two-year process, the final text is adopted and on 1 July the Constitutional Court's certification hearing begins. But on 6 September the Court finds that the text does not comply with the constitutional principles and refuses to certify it. <br>The text is amended; in October it is adopted by the Constitutional Assembly and sent to the Constitutional Court again. On 18 November the Court's second hearing begins and on 4 December it certifies the final text. Nelson Mandela signs the Constitution into law in Sharpeville, in Vereeniging, on 10 December, which is international Human Rights Day." <a href="https://www.concourt.org.za/index.php/constitution/history">Read More</a></span></span></p>
-
-		<h3>Nelson Mandela's Presidency (May 1994 to June 1999)</h3>
-			<p>Nelson Mandela's presidency was primarily concerned with the process of rebuilding South Africa as a multi-racial society. In addition to writing the countries new constitution and bill of rights, the administration adopted the <span class="FOOTNOTE">UN's Universal Declaration of Human Rights<span class="NOTE">"24 May, President Nelson Mandela, in his State of the Nation Address to Parliament, announces that South Africa would subscribe to the Universal Declaration of Human Rights and acceded to human rights conventions of the United Nations." <a href="https://www.sahistory.org.za/topic/african-national-congress-timeline-1990-1999">Read More</a></span></span> and set up the <span class="FOOTNOTE">Truth and Reconciliation Commission<span class="NOTE"> "SINCE the Constitution of the Republic of South Africa, 1993 (Act No. 200 of 1993), provides a historic bridge between the past of a deeply divided society characterized by strife, conflict, untold suffering and injustice, and a future founded on the recognition of human rights, democracy and peaceful co-existence for all South Africans, irrespective of colour, race, class, belief or sex; <br> AND SINCE it is deemed necessary to establish the truth in relation to past events as well as the motives for and circumstances in which gross violations of human fights have occurred, and to make the findings known in order to prevent a repetition of such acts in future; <br>AND SINCE the Constitution states that the pursuit of national unity, the well-being of all South African citizens and peace require reconciliation between the people of South Africa and the reconstruction of society; <br> AND SINCE the Constitution states that there is a need for understanding but not for vengeance, a need for reparation but not for retaliation, a need for ubuntu but not for victimization; <br> AND SINCE the Constitution states that in order to advance such reconciliation and reconstruction amnesty shall be granted in respect of acts, omissions and offences associated with political objectives committed in the course of the conflicts of the past" <a href="https://web.archive.org/web/20080512154223fw_/http://www.doj.gov.za/trc/legal/act9534.htm">Read More</a></span></span> to ease South Africa's transition to democracy. The TRC's mandate was to <span class="FOOTNOTE">investigate and record<span class="NOTE">"The task of the HRV Committee was to investigate human rights abuses that took place between 1960 and 1994, based on statements made to the TRC. The Committee established the identity of the victims, their fate or present whereabouts, and the nature and extent of the harm they have suffered; and whether the violations were the result of deliberate planning by the state or any other organisation, group or individual." <a href="https://web.archive.org/web/20080426184625fw_/http://www.doj.gov.za/trc/trccom.htm">Read More</a></span></span> human rights abuses that took place under apartheid, to <span class="FOOTNOTE">grant amnesty<span class="NOTE">"Chapter Four of the TRC’s founding legislation outlined the mechanisms and procedures of the amnesty process. These provided for the establishment of an Amnesty Committee (the Committee) and empowered it to consider and decide on applications for amnesty. The Act provided that the Committee could grant amnesty where it was satisfied that the application complied with the formal requirements of the Act; that the incident in question took place within specific time parameters, that it constituted an act associated with a political objective, that the applicant had made full disclosure of all the relevant facts, and that the nature of the violation was proportionate to the objective sought. The Act provided for immunity from criminal and civil prosecution for those granted amnesty." <a href="https://web.archive.org/web/20170612175119/http://truth.wwl.wits.ac.za/cat_descr.php?cat=3">Read More</a></span></span> to perpretators of politically motivated crimes in exchange for testimony for the purposes of creating a complete record of the human rights abuses that took place under apartheid, and to assist with <span class="FOOTNOTE">providing reparations and reconciliation<span class="NOTE">"The Truth and Reconciliation Commission (TRC) was established to, amongst other goals, facilitate the ‘rehabilitation and the restoration of the human and civil dignity of victims of violations of human rights’.  Primarily through the public hearings undertaken by the Human Rights Violations Committee, the Commission intended to restore voice and dignity to those previously marginalized and in the process confer public acknowledgement, widely regarded as a key contributor to the healing process. <br>At the time, the TRC was the first restorative justice process of its kind to conduct public hearings and provide space for survivors to tell their stories in their own words.  These hearings served an important symbolic function in a country where the system of governance had been premised on the denial and silencing of, in particular, black voices." <a href="https://web.archive.org/web/20161213180841/http://truth.wwl.wits.ac.za/cat_descr.php?cat=4">Read More</a></span></span> to victims of human rights abuses that took place under apartheid. The TRC gave it's summary report to President Nelson Mandela in <span class="FOOTNOTE">October 1998<span class="NOTE">"The commission brought forth many witnesses giving testimony about the secret and immoral acts committed by the Apartheid Government, the liberation forces including the ANC, and other forces for violence that many say would not have come out into the open otherwise. On October 28, 1998 the Commission presented its report, which condemned both sides for committing atrocities." <a href="https://www.sahistory.org.za/article/truth-and-reconciliation-commission-trc">Read More</a></span></span>, though the full report was not completed until 2003.</p>
-			<p>Nelson Mandela choose to step down from the presidency at the completion of his first presidential term in <span class="FOOTNOTE">1999<span class="NOTE">"On 7 July 1996,in a television broadcast President Nelson Mandela confirmed the rumours that he would not stand for re-election in 1999...The South African constitution has a stipulation that states that the president can only serve for two terms as the head of state. Mandela felt one term was enough as he had already laid the foundation for a better future for all." <a href="https://www.sahistory.org.za/dated-event/sa-president-nelson-mandela-step-down">Read More</a></span></span> Mandela was succeeded in office by <span class="FOOTNOTE">Thabo Mbeki<span class="NOTE">"South Africa's parliament has elected Thabo Mbeki to succeed President Nelson Mandela, who formally retires on Wednesday. Mr Mbeki - the African National Congress (ANC) leader and Mr Mandela's deputy for the last five years - will be sworn in on Wednesday at a ceremony in Pretoria featuring African and world leaders. <br>In a speech to mark his election at the National Assembly in Cape Town, Mr Mbeki paid tribute to the people who had given the ANC its overwhelming victory in South Africa's elections. <br>"If all of us stand tall today," he said, "it is only because we are borne aloft by the firm hands of the ordinary people of our country." <a href"http://news.bbc.co.uk/2/hi/africa/368673.stm">Read More</a></span></span>, who had been deputy president during Mandela's term.</p>
-	<div role="note"><p>Code adapted from <a href="https://style.u2764.com/">Kyebego’s News Style</a>, which is available for use under a <a href="https://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 license</a>. Unless otherwise specified, all internal content is original and also available for use under a CC BY-SA 4.0 license.</p></div></main>
+</p>
+</body>
+<footer>
+	🄯 2019 Julia Reed <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license nofollow noopener noreferrer">CC BY-SA</a>. <a href="https://style.u2764.com/no/">HTML Source</a>.
+</footer>
